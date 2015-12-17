@@ -1,0 +1,524 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2A00BCAD1C224EFB00985207 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A00BCAC1C224EFB00985207 /* AppDelegate.swift */; };
+		2A00BCAF1C224EFB00985207 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A00BCAE1C224EFB00985207 /* ViewController.swift */; };
+		2A00BCB21C224EFB00985207 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A00BCB01C224EFB00985207 /* Main.storyboard */; };
+		2A00BCB51C224EFB00985207 /* Checkpoint_Clock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A00BCB31C224EFB00985207 /* Checkpoint_Clock.xcdatamodeld */; };
+		2A00BCB71C224EFB00985207 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A00BCB61C224EFB00985207 /* Assets.xcassets */; };
+		2A00BCBA1C224EFB00985207 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A00BCB81C224EFB00985207 /* LaunchScreen.storyboard */; };
+		2A00BCC51C224EFB00985207 /* Checkpoint_ClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A00BCC41C224EFB00985207 /* Checkpoint_ClockTests.swift */; };
+		2A00BCD01C224EFB00985207 /* Checkpoint_ClockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A00BCCF1C224EFB00985207 /* Checkpoint_ClockUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2A00BCC11C224EFB00985207 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A00BCA11C224EFB00985207 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A00BCA81C224EFB00985207;
+			remoteInfo = "Checkpoint Clock";
+		};
+		2A00BCCC1C224EFB00985207 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A00BCA11C224EFB00985207 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A00BCA81C224EFB00985207;
+			remoteInfo = "Checkpoint Clock";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2A00BCA91C224EFB00985207 /* Checkpoint Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Checkpoint Clock.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A00BCAC1C224EFB00985207 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2A00BCAE1C224EFB00985207 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2A00BCB11C224EFB00985207 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2A00BCB41C224EFB00985207 /* Checkpoint_Clock.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Checkpoint_Clock.xcdatamodel; sourceTree = "<group>"; };
+		2A00BCB61C224EFB00985207 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2A00BCB91C224EFB00985207 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2A00BCBB1C224EFB00985207 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A00BCC01C224EFB00985207 /* Checkpoint ClockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Checkpoint ClockTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A00BCC41C224EFB00985207 /* Checkpoint_ClockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkpoint_ClockTests.swift; sourceTree = "<group>"; };
+		2A00BCC61C224EFB00985207 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A00BCCB1C224EFB00985207 /* Checkpoint ClockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Checkpoint ClockUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A00BCCF1C224EFB00985207 /* Checkpoint_ClockUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkpoint_ClockUITests.swift; sourceTree = "<group>"; };
+		2A00BCD11C224EFB00985207 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2A00BCA61C224EFB00985207 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A00BCBD1C224EFB00985207 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A00BCC81C224EFB00985207 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2A00BCA01C224EFB00985207 = {
+			isa = PBXGroup;
+			children = (
+				2A00BCAB1C224EFB00985207 /* Checkpoint Clock */,
+				2A00BCC31C224EFB00985207 /* Checkpoint ClockTests */,
+				2A00BCCE1C224EFB00985207 /* Checkpoint ClockUITests */,
+				2A00BCAA1C224EFB00985207 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2A00BCAA1C224EFB00985207 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2A00BCA91C224EFB00985207 /* Checkpoint Clock.app */,
+				2A00BCC01C224EFB00985207 /* Checkpoint ClockTests.xctest */,
+				2A00BCCB1C224EFB00985207 /* Checkpoint ClockUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2A00BCAB1C224EFB00985207 /* Checkpoint Clock */ = {
+			isa = PBXGroup;
+			children = (
+				2A00BCAC1C224EFB00985207 /* AppDelegate.swift */,
+				2A00BCAE1C224EFB00985207 /* ViewController.swift */,
+				2A00BCB01C224EFB00985207 /* Main.storyboard */,
+				2A00BCB61C224EFB00985207 /* Assets.xcassets */,
+				2A00BCB81C224EFB00985207 /* LaunchScreen.storyboard */,
+				2A00BCBB1C224EFB00985207 /* Info.plist */,
+				2A00BCB31C224EFB00985207 /* Checkpoint_Clock.xcdatamodeld */,
+			);
+			path = "Checkpoint Clock";
+			sourceTree = "<group>";
+		};
+		2A00BCC31C224EFB00985207 /* Checkpoint ClockTests */ = {
+			isa = PBXGroup;
+			children = (
+				2A00BCC41C224EFB00985207 /* Checkpoint_ClockTests.swift */,
+				2A00BCC61C224EFB00985207 /* Info.plist */,
+			);
+			path = "Checkpoint ClockTests";
+			sourceTree = "<group>";
+		};
+		2A00BCCE1C224EFB00985207 /* Checkpoint ClockUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2A00BCCF1C224EFB00985207 /* Checkpoint_ClockUITests.swift */,
+				2A00BCD11C224EFB00985207 /* Info.plist */,
+			);
+			path = "Checkpoint ClockUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2A00BCA81C224EFB00985207 /* Checkpoint Clock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A00BCD41C224EFB00985207 /* Build configuration list for PBXNativeTarget "Checkpoint Clock" */;
+			buildPhases = (
+				2A00BCA51C224EFB00985207 /* Sources */,
+				2A00BCA61C224EFB00985207 /* Frameworks */,
+				2A00BCA71C224EFB00985207 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Checkpoint Clock";
+			productName = "Checkpoint Clock";
+			productReference = 2A00BCA91C224EFB00985207 /* Checkpoint Clock.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2A00BCBF1C224EFB00985207 /* Checkpoint ClockTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A00BCD71C224EFB00985207 /* Build configuration list for PBXNativeTarget "Checkpoint ClockTests" */;
+			buildPhases = (
+				2A00BCBC1C224EFB00985207 /* Sources */,
+				2A00BCBD1C224EFB00985207 /* Frameworks */,
+				2A00BCBE1C224EFB00985207 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A00BCC21C224EFB00985207 /* PBXTargetDependency */,
+			);
+			name = "Checkpoint ClockTests";
+			productName = "Checkpoint ClockTests";
+			productReference = 2A00BCC01C224EFB00985207 /* Checkpoint ClockTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2A00BCCA1C224EFB00985207 /* Checkpoint ClockUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A00BCDA1C224EFB00985207 /* Build configuration list for PBXNativeTarget "Checkpoint ClockUITests" */;
+			buildPhases = (
+				2A00BCC71C224EFB00985207 /* Sources */,
+				2A00BCC81C224EFB00985207 /* Frameworks */,
+				2A00BCC91C224EFB00985207 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A00BCCD1C224EFB00985207 /* PBXTargetDependency */,
+			);
+			name = "Checkpoint ClockUITests";
+			productName = "Checkpoint ClockUITests";
+			productReference = 2A00BCCB1C224EFB00985207 /* Checkpoint ClockUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2A00BCA11C224EFB00985207 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Clarence Westberg";
+				TargetAttributes = {
+					2A00BCA81C224EFB00985207 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					2A00BCBF1C224EFB00985207 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 2A00BCA81C224EFB00985207;
+					};
+					2A00BCCA1C224EFB00985207 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 2A00BCA81C224EFB00985207;
+					};
+				};
+			};
+			buildConfigurationList = 2A00BCA41C224EFB00985207 /* Build configuration list for PBXProject "Checkpoint Clock" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2A00BCA01C224EFB00985207;
+			productRefGroup = 2A00BCAA1C224EFB00985207 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2A00BCA81C224EFB00985207 /* Checkpoint Clock */,
+				2A00BCBF1C224EFB00985207 /* Checkpoint ClockTests */,
+				2A00BCCA1C224EFB00985207 /* Checkpoint ClockUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2A00BCA71C224EFB00985207 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A00BCBA1C224EFB00985207 /* LaunchScreen.storyboard in Resources */,
+				2A00BCB71C224EFB00985207 /* Assets.xcassets in Resources */,
+				2A00BCB21C224EFB00985207 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A00BCBE1C224EFB00985207 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A00BCC91C224EFB00985207 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2A00BCA51C224EFB00985207 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A00BCB51C224EFB00985207 /* Checkpoint_Clock.xcdatamodeld in Sources */,
+				2A00BCAF1C224EFB00985207 /* ViewController.swift in Sources */,
+				2A00BCAD1C224EFB00985207 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A00BCBC1C224EFB00985207 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A00BCC51C224EFB00985207 /* Checkpoint_ClockTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A00BCC71C224EFB00985207 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A00BCD01C224EFB00985207 /* Checkpoint_ClockUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2A00BCC21C224EFB00985207 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A00BCA81C224EFB00985207 /* Checkpoint Clock */;
+			targetProxy = 2A00BCC11C224EFB00985207 /* PBXContainerItemProxy */;
+		};
+		2A00BCCD1C224EFB00985207 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A00BCA81C224EFB00985207 /* Checkpoint Clock */;
+			targetProxy = 2A00BCCC1C224EFB00985207 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2A00BCB01C224EFB00985207 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A00BCB11C224EFB00985207 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2A00BCB81C224EFB00985207 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A00BCB91C224EFB00985207 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2A00BCD21C224EFB00985207 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2A00BCD31C224EFB00985207 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2A00BCD51C224EFB00985207 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Checkpoint Clock/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cwestberg.rally.Checkpoint-Clock";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2A00BCD61C224EFB00985207 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Checkpoint Clock/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cwestberg.rally.Checkpoint-Clock";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2A00BCD81C224EFB00985207 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Checkpoint ClockTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cwestberg.rally.Checkpoint-ClockTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Checkpoint Clock.app/Checkpoint Clock";
+			};
+			name = Debug;
+		};
+		2A00BCD91C224EFB00985207 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Checkpoint ClockTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cwestberg.rally.Checkpoint-ClockTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Checkpoint Clock.app/Checkpoint Clock";
+			};
+			name = Release;
+		};
+		2A00BCDB1C224EFB00985207 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Checkpoint ClockUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cwestberg.rally.Checkpoint-ClockUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Checkpoint Clock";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		2A00BCDC1C224EFB00985207 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Checkpoint ClockUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cwestberg.rally.Checkpoint-ClockUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Checkpoint Clock";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2A00BCA41C224EFB00985207 /* Build configuration list for PBXProject "Checkpoint Clock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A00BCD21C224EFB00985207 /* Debug */,
+				2A00BCD31C224EFB00985207 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A00BCD41C224EFB00985207 /* Build configuration list for PBXNativeTarget "Checkpoint Clock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A00BCD51C224EFB00985207 /* Debug */,
+				2A00BCD61C224EFB00985207 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2A00BCD71C224EFB00985207 /* Build configuration list for PBXNativeTarget "Checkpoint ClockTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A00BCD81C224EFB00985207 /* Debug */,
+				2A00BCD91C224EFB00985207 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2A00BCDA1C224EFB00985207 /* Build configuration list for PBXNativeTarget "Checkpoint ClockUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A00BCDB1C224EFB00985207 /* Debug */,
+				2A00BCDC1C224EFB00985207 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2A00BCB31C224EFB00985207 /* Checkpoint_Clock.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2A00BCB41C224EFB00985207 /* Checkpoint_Clock.xcdatamodel */,
+			);
+			currentVersion = 2A00BCB41C224EFB00985207 /* Checkpoint_Clock.xcdatamodel */;
+			path = Checkpoint_Clock.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 2A00BCA11C224EFB00985207 /* Project object */;
+}
