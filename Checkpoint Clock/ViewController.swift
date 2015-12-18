@@ -56,15 +56,17 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         
         print("second = \(dateComponents.second)")
         
-        let second = dateComponents.second
 
         let unit = Double(dateComponents.second)
+        let second = Int(unit)
+        let secondString = String(format: "%02d", second)
+
         let cent = Int((unit * (1.6667)))
         let centString = String(format: "%02d", cent)
         let minuteString = String(format: "%02d", dateComponents.minute)
         switch timeUnit {
         case "seconds":
-            timeLbl.text = "\(dateComponents.hour):\(minuteString):\(second)"
+            timeLbl.text = "\(dateComponents.hour):\(minuteString):\(secondString)"
         case "cents":
             timeLbl.text = "\(dateComponents.hour):\(minuteString).\(centString)"
         default:
