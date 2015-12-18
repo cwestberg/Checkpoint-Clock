@@ -15,12 +15,11 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var splitTable: UITableView!
     
     var items: [String] = []
-    
+    var timeUnit = "seconds"
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.splitTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-
         
         _ = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self,
             selector: "updateTimeLabel", userInfo: nil, repeats: true)
@@ -36,11 +35,43 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         self.splitTable.reloadData()
     }
     
+    @IBAction func secondsOrCents(sender:UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            timeUnit = "seconds"
+        case 1:
+            timeUnit = "cents"
+        default:
+            break;
+        }
+    }
     
     func updateTimeLabel() {
-        let formatter = NSDateFormatter()
-        formatter.timeStyle = .MediumStyle
-        timeLbl.text = formatter.stringFromDate(NSDate())
+        
+        let currentDate = NSDate()
+        let calendar = NSCalendar.currentCalendar()
+        let dateComponents = calendar.components([NSCalendarUnit.Day, NSCalendarUnit.Month, NSCalendarUnit.Year, NSCalendarUnit.WeekOfYear, NSCalendarUnit.Hour, NSCalendarUnit.Minute, NSCalendarUnit.Second, NSCalendarUnit.Nanosecond], fromDate: currentDate)
+        
+        print("second = \(dateComponents.second)")
+        
+        let second = dateComponents.second
+
+        let unit = Double(dateComponents.second)
+        let cent = Int((unit * (1.6667)))
+        let centString = String(format: "%02d", cent)
+        let minuteString = String(format: "%02d", dateComponents.minute)
+        switch timeUnit {
+        case "seconds":
+            timeLbl.text = "\(dateComponents.hour):\(minuteString):\(second)"
+        case "cents":
+            timeLbl.text = "\(dateComponents.hour):\(minuteString).\(centString)"
+        default:
+            break;
+        }
+
+    
+//          formatter.timeStyle = .MediumStyle
+//        timeLbl.text = formatter.stringFromDate(NSDate())
     }
     
     // Table
@@ -58,6 +89,13 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("You selected cell #\(indexPath.row)!")
         
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            items.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
     }
     // End Table
 
