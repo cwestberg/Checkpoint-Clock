@@ -34,6 +34,9 @@
                             </tableView>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="jWj-hv-Nxa">
                                 <rect key="frame" x="173" y="559" width="94" height="29"/>
+                                <connections>
+                                    <action selector="stepperAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="Xwv-eL-4Vp"/>
+                                </connections>
                             </stepper>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGg-1k-FBV">
                                 <rect key="frame" x="20" y="69" width="560" height="30"/>

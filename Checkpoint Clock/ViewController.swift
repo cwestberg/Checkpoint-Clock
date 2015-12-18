@@ -35,6 +35,8 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         self.splitTable.reloadData()
     }
     
+    @IBAction func stepperAction(sender: AnyObject) {
+    }
     @IBAction func secondsOrCents(sender:UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
