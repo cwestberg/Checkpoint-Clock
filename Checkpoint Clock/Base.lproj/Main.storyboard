@@ -38,13 +38,6 @@
                                     <action selector="stepperAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="Xwv-eL-4Vp"/>
                                 </connections>
                             </stepper>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGg-1k-FBV">
-                                <rect key="frame" x="20" y="69" width="560" height="30"/>
-                                <state key="normal" title="Split"/>
-                                <connections>
-                                    <action selector="splitBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l8B-IU-h96"/>
-                                </connections>
-                            </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nCk-Rv-Nug">
                                 <rect key="frame" x="20" y="559" width="135" height="29"/>
                                 <segments>
@@ -61,26 +54,36 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGg-1k-FBV">
+                                <rect key="frame" x="20" y="14" width="560" height="91"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="91" id="bSf-mG-w2S"/>
+                                </constraints>
+                                <state key="normal" title="Split"/>
+                                <connections>
+                                    <action selector="splitBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l8B-IU-h96"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="kGg-1k-FBV" firstAttribute="leading" secondItem="wVv-iW-VK7" secondAttribute="leading" id="0I4-bf-RFH"/>
                             <constraint firstItem="nCk-Rv-Nug" firstAttribute="leading" secondItem="wVv-iW-VK7" secondAttribute="leading" id="1j3-u8-Q9p"/>
+                            <constraint firstItem="wVv-iW-VK7" firstAttribute="top" secondItem="kGg-1k-FBV" secondAttribute="bottom" constant="13" id="6P0-nG-7rO"/>
                             <constraint firstItem="AJ8-Ju-R3U" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="7C2-wv-DHL"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="wVv-iW-VK7" secondAttribute="bottom" constant="81" id="9Ir-4g-lks"/>
                             <constraint firstItem="jWj-hv-Nxa" firstAttribute="leading" secondItem="nCk-Rv-Nug" secondAttribute="trailing" constant="18" id="CMR-4H-Ztk"/>
+                            <constraint firstItem="kGg-1k-FBV" firstAttribute="centerX" secondItem="AJ8-Ju-R3U" secondAttribute="centerX" id="E5b-dg-6bE"/>
                             <constraint firstItem="jWj-hv-Nxa" firstAttribute="top" secondItem="nCk-Rv-Nug" secondAttribute="top" id="IDM-5H-qT7"/>
                             <constraint firstItem="jWj-hv-Nxa" firstAttribute="centerY" secondItem="DQT-u4-QOK" secondAttribute="centerY" id="ImC-o7-UTc"/>
-                            <constraint firstItem="kGg-1k-FBV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="49" id="Key-k5-It6"/>
                             <constraint firstItem="wVv-iW-VK7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Ksz-Le-Uwq"/>
                             <constraint firstItem="wVv-iW-VK7" firstAttribute="top" secondItem="AJ8-Ju-R3U" secondAttribute="bottom" constant="45" id="PZY-N4-6I5"/>
                             <constraint firstItem="DQT-u4-QOK" firstAttribute="leading" secondItem="jWj-hv-Nxa" secondAttribute="trailing" constant="8" symbolic="YES" id="d3f-Ol-V8d"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nCk-Rv-Nug" secondAttribute="bottom" constant="13" id="djH-ao-UAP"/>
                             <constraint firstItem="AJ8-Ju-R3U" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="iS5-6d-0wf"/>
-                            <constraint firstItem="kGg-1k-FBV" firstAttribute="leading" secondItem="wVv-iW-VK7" secondAttribute="leading" id="obZ-6R-D4X"/>
+                            <constraint firstItem="kGg-1k-FBV" firstAttribute="trailing" secondItem="wVv-iW-VK7" secondAttribute="trailing" id="loA-jH-QMg"/>
                             <constraint firstAttribute="trailing" secondItem="AJ8-Ju-R3U" secondAttribute="trailing" id="puE-it-xMQ"/>
-                            <constraint firstItem="wVv-iW-VK7" firstAttribute="top" secondItem="kGg-1k-FBV" secondAttribute="bottom" constant="19" id="uEy-0j-Qj3"/>
-                            <constraint firstItem="kGg-1k-FBV" firstAttribute="trailing" secondItem="wVv-iW-VK7" secondAttribute="trailing" id="yJi-vF-Fps"/>
-                            <constraint firstItem="kGg-1k-FBV" firstAttribute="centerX" secondItem="AJ8-Ju-R3U" secondAttribute="centerX" id="zmy-4d-cjo"/>
+                            <constraint firstItem="kGg-1k-FBV" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="14" id="qol-0i-7Hc"/>
                         </constraints>
                     </view>
                     <connections>
