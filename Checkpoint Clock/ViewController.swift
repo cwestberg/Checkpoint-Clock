@@ -127,6 +127,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         actionSheetController.addTextFieldWithConfigurationHandler { textField -> Void in
             //TextField configuration
             textField.textColor = UIColor.blueColor()
+            textField.keyboardType = UIKeyboardType.NumberPad
         }
         
         //Present the AlertController
