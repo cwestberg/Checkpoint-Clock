@@ -92,6 +92,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("You selected cell #\(indexPath.row)!")
+        showAlertTapped(indexPath.row)
         
     }
     
@@ -103,5 +104,33 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     }
     // End Table
 
+    @IBAction func showAlertTapped(sender: Int) {
+        //Create the AlertController
+        let actionSheetController: UIAlertController = UIAlertController(title: "Alert", message: "Swiftly Now! Choose an option!", preferredStyle: .Alert)
+        
+        //Create and add the Cancel action
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+            //Do some stuff
+        }
+        actionSheetController.addAction(cancelAction)
+        //Create and an option action
+        let nextAction: UIAlertAction = UIAlertAction(title: "Add", style: .Default) { action -> Void in
+            //Do some other stuff
+            let carNumber = actionSheetController.textFields![0] 
+            var item = self.items[sender]
+            item = "\(item) for car number: \(carNumber.text!)"
+            self.items[sender] = item
+            self.splitTable.reloadData()
+        }
+        actionSheetController.addAction(nextAction)
+        //Add a text field
+        actionSheetController.addTextFieldWithConfigurationHandler { textField -> Void in
+            //TextField configuration
+            textField.textColor = UIColor.blueColor()
+        }
+        
+        //Present the AlertController
+        self.presentViewController(actionSheetController, animated: true, completion: nil)
+    }
 }
 
