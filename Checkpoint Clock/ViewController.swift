@@ -24,12 +24,6 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         _ = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self,
             selector: "updateTimeLabel", userInfo: nil, repeats: true)
     }
-//    override func viewDidAppear(animated: Bool) {
-//        super.viewDidDisappear(animated)
-//        let firstActivityItem = "Items contents"
-//        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [firstActivityItem], applicationActivities: nil)
-//        presentViewController(activityViewController, animated:true, completion: nil)
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -117,37 +111,6 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     // End Table
     
 
-//    @IBAction func openControl() {
-//        //Create the AlertController
-//        let actionSheetController: UIAlertController = UIAlertController(title: "Alert", message: "Open Control", preferredStyle: .Alert)
-//        
-//        //Create and add the Cancel action
-//        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
-//            //Do some stuff
-//        }
-//        actionSheetController.addAction(cancelAction)
-//
-//        //Create and add the Open action
-//        let openAction: UIAlertAction = UIAlertAction(title: "Default", style: .Default) { action -> Void in
-//            //Do some stuff
-//            let controlNumber = actionSheetController.textFields![0]
-//            let item = "Opened Control \(controlNumber) at \(self.timeLbl.text)"
-//            self.items[0] = item
-//        }
-//        actionSheetController.addAction(openAction)
-//        
-//        
-//        //Add a text field
-//        actionSheetController.addTextFieldWithConfigurationHandler { textField -> Void in
-//            //TextField configuration
-//            textField.text = "Control # "
-//            textField.textColor = UIColor.blueColor()
-//            textField.keyboardType = UIKeyboardType.NumberPad
-//        }
-//        
-//        //Present the AlertController
-//        self.presentViewController(actionSheetController, animated: true, completion: nil)
-//    }
 //    ==========================================
     @IBAction func showAlertTapped(sender: Int) {
         //Create the AlertController
