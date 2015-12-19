@@ -115,7 +115,40 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         }
     }
     // End Table
+    
 
+//    @IBAction func openControl() {
+//        //Create the AlertController
+//        let actionSheetController: UIAlertController = UIAlertController(title: "Alert", message: "Open Control", preferredStyle: .Alert)
+//        
+//        //Create and add the Cancel action
+//        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+//            //Do some stuff
+//        }
+//        actionSheetController.addAction(cancelAction)
+//
+//        //Create and add the Open action
+//        let openAction: UIAlertAction = UIAlertAction(title: "Default", style: .Default) { action -> Void in
+//            //Do some stuff
+//            let controlNumber = actionSheetController.textFields![0]
+//            let item = "Opened Control \(controlNumber) at \(self.timeLbl.text)"
+//            self.items[0] = item
+//        }
+//        actionSheetController.addAction(openAction)
+//        
+//        
+//        //Add a text field
+//        actionSheetController.addTextFieldWithConfigurationHandler { textField -> Void in
+//            //TextField configuration
+//            textField.text = "Control # "
+//            textField.textColor = UIColor.blueColor()
+//            textField.keyboardType = UIKeyboardType.NumberPad
+//        }
+//        
+//        //Present the AlertController
+//        self.presentViewController(actionSheetController, animated: true, completion: nil)
+//    }
+//    ==========================================
     @IBAction func showAlertTapped(sender: Int) {
         //Create the AlertController
         let actionSheetController: UIAlertController = UIAlertController(title: "Alert", message: "Car Number!", preferredStyle: .Alert)
@@ -123,24 +156,37 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         //Create and add the Cancel action
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
             //Do some stuff
+
         }
+
         actionSheetController.addAction(cancelAction)
         //Create and an option action
         let nextAction: UIAlertAction = UIAlertAction(title: "Add", style: .Default) { action -> Void in
             //Do some other stuff
             let carNumber = actionSheetController.textFields![0]
             let ta = actionSheetController.textFields![1]
+ 
             var item = self.items[sender]
             if ta.text! == "TA " {
                 item = "\(item) \(carNumber.text!)"
+
             }
             else {
                 item = "\(item) \(carNumber.text!) \(ta.text!)"
             }
+            
             self.items[sender] = item
             self.splitTable.reloadData()
         }
         actionSheetController.addAction(nextAction)
+        
+        let deletaAllAction: UIAlertAction = UIAlertAction(title: "Delete All", style: .Default) { action -> Void in
+            //Do some stuff
+            self.items = []
+            self.splitTable.reloadData()
+        }
+        actionSheetController.addAction(deletaAllAction)
+        
         //Add a text field
         actionSheetController.addTextFieldWithConfigurationHandler { textField -> Void in
             //TextField configuration
@@ -158,6 +204,77 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         
         //Present the AlertController
         self.presentViewController(actionSheetController, animated: true, completion: nil)
+    }
+    
+
+    @IBAction func openBtn(sender: AnyObject) {
+        //Create the AlertController
+        let actionSheetController: UIAlertController = UIAlertController(title: "Alert", message: "Open Control", preferredStyle: .Alert)
+        
+        //Create and add the Cancel action
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+            //Do some stuff
+        }
+        actionSheetController.addAction(cancelAction)
+        
+        //Create and add the Open action
+        let openAction: UIAlertAction = UIAlertAction(title: "Open", style: .Default) { action -> Void in
+            //Do some stuff
+            let controlNumber = actionSheetController.textFields![0]
+            let item = "Opened Control \(controlNumber.text!) at \(self.timeLbl.text!)"
+            self.items.insert(item,atIndex:0)
+            self.splitTable.reloadData()
+
+        }
+        actionSheetController.addAction(openAction)
+        
+        
+        //Add a text field
+        actionSheetController.addTextFieldWithConfigurationHandler { textField -> Void in
+            //TextField configuration
+            textField.text = "Control # "
+            textField.textColor = UIColor.blueColor()
+            textField.keyboardType = UIKeyboardType.NumberPad
+        }
+        
+        //Present the AlertController
+        self.presentViewController(actionSheetController, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func closeBtn(sender: AnyObject) {
+        //Create the AlertController
+        let actionSheetController: UIAlertController = UIAlertController(title: "Alert", message: "Close Control", preferredStyle: .Alert)
+        
+        //Create and add the Cancel action
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+            //Do some stuff
+        }
+        actionSheetController.addAction(cancelAction)
+        
+        //Create and add the Open action
+        let openAction: UIAlertAction = UIAlertAction(title: "Close", style: .Default) { action -> Void in
+            //Do some stuff
+            let controlNumber = actionSheetController.textFields![0]
+            let item = "Closed Control \(controlNumber.text!) at \(self.timeLbl.text!)"
+            self.items.insert(item,atIndex:0)
+            self.splitTable.reloadData()
+            
+        }
+        actionSheetController.addAction(openAction)
+        
+        
+        //Add a text field
+        actionSheetController.addTextFieldWithConfigurationHandler { textField -> Void in
+            //TextField configuration
+            textField.text = "Control # "
+            textField.textColor = UIColor.blueColor()
+            textField.keyboardType = UIKeyboardType.NumberPad
+        }
+        
+        //Present the AlertController
+        self.presentViewController(actionSheetController, animated: true, completion: nil)
+        
     }
 }
 

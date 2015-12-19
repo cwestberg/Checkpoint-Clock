@@ -71,6 +71,20 @@
                                     <action selector="shareBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xbe-El-KoR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pg4-VO-syK">
+                                <rect key="frame" x="177" y="521" width="38" height="30"/>
+                                <state key="normal" title="Open"/>
+                                <connections>
+                                    <action selector="openBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dTr-5I-a19"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETW-c3-KrN">
+                                <rect key="frame" x="227" y="521" width="39" height="30"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="closeBtn:" destination="BYZ-38-t0r" eventType="touchDown" id="grr-oC-1nQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -88,13 +102,17 @@
                             <constraint firstItem="wVv-iW-VK7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Ksz-Le-Uwq"/>
                             <constraint firstItem="kGg-1k-FBV" firstAttribute="trailing" secondItem="wVv-iW-VK7" secondAttribute="trailing" id="PJD-Up-LwI"/>
                             <constraint firstItem="wVv-iW-VK7" firstAttribute="top" secondItem="AJ8-Ju-R3U" secondAttribute="bottom" constant="45" id="PZY-N4-6I5"/>
+                            <constraint firstItem="ETW-c3-KrN" firstAttribute="baseline" secondItem="pg4-VO-syK" secondAttribute="baseline" id="Psb-wC-dfs"/>
+                            <constraint firstItem="ETW-c3-KrN" firstAttribute="leading" secondItem="pg4-VO-syK" secondAttribute="trailing" constant="12" id="W7k-Or-LAF"/>
                             <constraint firstItem="kGg-1k-FBV" firstAttribute="leading" secondItem="wVv-iW-VK7" secondAttribute="leading" id="Zzo-Lt-8af"/>
                             <constraint firstItem="DQT-u4-QOK" firstAttribute="leading" secondItem="jWj-hv-Nxa" secondAttribute="trailing" constant="8" symbolic="YES" id="d3f-Ol-V8d"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nCk-Rv-Nug" secondAttribute="bottom" constant="13" id="djH-ao-UAP"/>
                             <constraint firstItem="AJ8-Ju-R3U" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="iS5-6d-0wf"/>
+                            <constraint firstItem="pg4-VO-syK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="177" id="ixN-Ng-6Mb"/>
                             <constraint firstItem="kGg-1k-FBV" firstAttribute="trailing" secondItem="wVv-iW-VK7" secondAttribute="trailing" id="loA-jH-QMg"/>
                             <constraint firstAttribute="trailing" secondItem="AJ8-Ju-R3U" secondAttribute="trailing" id="puE-it-xMQ"/>
                             <constraint firstItem="kGg-1k-FBV" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="14" id="qol-0i-7Hc"/>
+                            <constraint firstItem="pg4-VO-syK" firstAttribute="baseline" secondItem="61l-2H-vdZ" secondAttribute="baseline" id="uTU-cZ-crP"/>
                         </constraints>
                     </view>
                     <connections>
