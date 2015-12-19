@@ -116,9 +116,10 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         //Create and an option action
         let nextAction: UIAlertAction = UIAlertAction(title: "Add", style: .Default) { action -> Void in
             //Do some other stuff
-            let carNumber = actionSheetController.textFields![0] 
+            let carNumber = actionSheetController.textFields![0]
+            let ta = actionSheetController.textFields![1]
             var item = self.items[sender]
-            item = "\(item) for car number: \(carNumber.text!)"
+            item = "\(item) \(carNumber.text!) \(ta.text!)"
             self.items[sender] = item
             self.splitTable.reloadData()
         }
@@ -126,6 +127,14 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         //Add a text field
         actionSheetController.addTextFieldWithConfigurationHandler { textField -> Void in
             //TextField configuration
+            textField.text = "Car # "
+            textField.textColor = UIColor.blueColor()
+            textField.keyboardType = UIKeyboardType.NumberPad
+        }
+        
+        actionSheetController.addTextFieldWithConfigurationHandler { textField -> Void in
+            //TextField configuration
+            textField.text = "TA "
             textField.textColor = UIColor.blueColor()
             textField.keyboardType = UIKeyboardType.NumberPad
         }
