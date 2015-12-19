@@ -131,7 +131,12 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
             let carNumber = actionSheetController.textFields![0]
             let ta = actionSheetController.textFields![1]
             var item = self.items[sender]
-            item = "\(item) \(carNumber.text!) \(ta.text!)"
+            if ta.text! == "TA " {
+                item = "\(item) \(carNumber.text!)"
+            }
+            else {
+                item = "\(item) \(carNumber.text!) \(ta.text!)"
+            }
             self.items[sender] = item
             self.splitTable.reloadData()
         }
