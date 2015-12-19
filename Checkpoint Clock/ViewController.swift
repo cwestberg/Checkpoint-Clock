@@ -106,7 +106,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
 
     @IBAction func showAlertTapped(sender: Int) {
         //Create the AlertController
-        let actionSheetController: UIAlertController = UIAlertController(title: "Alert", message: "Swiftly Now! Choose an option!", preferredStyle: .Alert)
+        let actionSheetController: UIAlertController = UIAlertController(title: "Alert", message: "Car Number!", preferredStyle: .Alert)
         
         //Create and add the Cancel action
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
