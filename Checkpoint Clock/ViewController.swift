@@ -24,12 +24,24 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         _ = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self,
             selector: "updateTimeLabel", userInfo: nil, repeats: true)
     }
+//    override func viewDidAppear(animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        let firstActivityItem = "Items contents"
+//        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [firstActivityItem], applicationActivities: nil)
+//        presentViewController(activityViewController, animated:true, completion: nil)
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func shareBtn(sender: AnyObject) {
+        print("Items contents \(self.items)")
+        let firstActivityItem = "Items contents \(self.items)"
+        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [firstActivityItem], applicationActivities: nil)
+        presentViewController(activityViewController, animated:true, completion: nil)
+    }
     @IBAction func splitBtn(sender: AnyObject) {
         self.items.insert(timeLbl.text!,atIndex:0)
         self.splitTable.reloadData()
