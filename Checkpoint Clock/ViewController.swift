@@ -155,14 +155,14 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
             //TextField configuration
             textField.text = "Car # "
             textField.textColor = UIColor.blueColor()
-            textField.keyboardType = UIKeyboardType.NumberPad
+//            textField.keyboardType = UIKeyboardType.NumberPad
         }
         
         actionSheetController.addTextFieldWithConfigurationHandler { textField -> Void in
             //TextField configuration
             textField.text = "TA "
             textField.textColor = UIColor.blueColor()
-            textField.keyboardType = UIKeyboardType.NumberPad
+//            textField.keyboardType = UIKeyboardType.NumberPad
         }
         
         //Present the AlertController
@@ -184,7 +184,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         let openAction: UIAlertAction = UIAlertAction(title: "Open", style: .Default) { action -> Void in
             //Do some stuff
             let controlNumber = actionSheetController.textFields![0]
-            let item = "Opened Control \(controlNumber.text!) at \(self.timeLbl.text!)"
+            let item = "Opened \(controlNumber.text!) at \(self.timeLbl.text!)"
             self.items.insert(item,atIndex:0)
             self.splitTable.reloadData()
 
@@ -197,7 +197,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
             //TextField configuration
             textField.text = "Control # "
             textField.textColor = UIColor.blueColor()
-            textField.keyboardType = UIKeyboardType.NumberPad
+//            textField.keyboardType = UIKeyboardType.NumberPad
         }
         
         //Present the AlertController
@@ -219,7 +219,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         let openAction: UIAlertAction = UIAlertAction(title: "Close", style: .Default) { action -> Void in
             //Do some stuff
             let controlNumber = actionSheetController.textFields![0]
-            let item = "Closed Control \(controlNumber.text!) at \(self.timeLbl.text!)"
+            let item = "Closed \(controlNumber.text!) at \(self.timeLbl.text!)"
             self.items.insert(item,atIndex:0)
             self.splitTable.reloadData()
             
@@ -232,7 +232,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
             //TextField configuration
             textField.text = "Control # "
             textField.textColor = UIColor.blueColor()
-            textField.keyboardType = UIKeyboardType.NumberPad
+//            textField.keyboardType = UIKeyboardType.NumberPad
         }
         
         //Present the AlertController
