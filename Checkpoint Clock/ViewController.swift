@@ -60,7 +60,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         let calendar = NSCalendar.currentCalendar()
         let dateComponents = calendar.components([NSCalendarUnit.Day, NSCalendarUnit.Month, NSCalendarUnit.Year, NSCalendarUnit.WeekOfYear, NSCalendarUnit.Hour, NSCalendarUnit.Minute, NSCalendarUnit.Second, NSCalendarUnit.Nanosecond], fromDate: currentDate)
         
-        print("second = \(dateComponents.second)")
+//        print("second = \(dateComponents.second)")
         
 
         let unit = Double(dateComponents.second)
