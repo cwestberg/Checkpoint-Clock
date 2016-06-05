@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import CoreBluetooth
 
 class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
 
@@ -16,29 +17,82 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     
     var items: [String] = []
     var timeUnit = "seconds"
+    var delayTimer = NSTimer()
+    var timeUp = true
+    
+    // Bluetooth EZ-Key
+    var keys = [UIKeyCommand]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.splitTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         _ = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self,
-            selector: "updateTimeLabel", userInfo: nil, repeats: true)
+            selector: #selector(ViewController.updateTimeLabel), userInfo: nil, repeats: true)
+        
+        // Bluetooth EZ-Key
+        // "w" is pin 8 of the Bluetooth EZ-key chip
+        keys.append(UIKeyCommand(input: "w", modifierFlags: [], action:  #selector(ViewController.keyPressed(_:))))
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    // Bluetooth EZ-Key
+    
+    override var keyCommands: [UIKeyCommand]? {
+        get {
+            return keys
+        }
+    }
 
     @IBAction func shareBtn(sender: AnyObject) {
-        print("Items contents \(self.items)")
-        let firstActivityItem = "Items contents \(self.items)"
+        var message = ""
+        for item in self.items {
+            message = message + item + "\r\n"
+        }
+        print("Items contents \r\n \(message)")
+        let firstActivityItem = "\(message)"
         let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [firstActivityItem], applicationActivities: nil)
         presentViewController(activityViewController, animated:true, completion: nil)
+
+
+    }
+    // Split functions
+    func keyPressed(command: UIKeyCommand) {
+        print("key pressed")
+        self.splitActions()
+
+//        self.items.insert(timeLbl.text!,atIndex:0)
+//        self.splitTable.reloadData()
     }
     @IBAction func splitBtn(sender: AnyObject) {
-        self.items.insert(timeLbl.text!,atIndex:0)
-        self.splitTable.reloadData()
+        self.splitActions()
+//        if timeUp == true {
+//            self.items.insert(timeLbl.text!,atIndex:0)
+//            self.splitTable.reloadData()
+//            timeUp = false
+//            // start the timer
+//            delayTimer = NSTimer.scheduledTimerWithTimeInterval(0.7, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+//        }
+
+    }
+    func splitActions(){
+        if timeUp == true {
+            self.items.insert(timeLbl.text!,atIndex:0)
+            self.splitTable.reloadData()
+            timeUp = false
+            // start the timer
+            delayTimer = NSTimer.scheduledTimerWithTimeInterval(0.7, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+        }
+
+    }
+    func timerAction(){
+        timeUp = true
+        delayTimer.invalidate()
     }
     
     @IBAction func stepperAction(sender: AnyObject) {
@@ -131,11 +185,11 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
  
             var item = self.items[sender]
             if ta.text! == "TA " {
-                item = "\(item) \(carNumber.text!)"
+                item = "\(item),\(carNumber.text!)"
 
             }
             else {
-                item = "\(item) \(carNumber.text!) \(ta.text!)"
+                item = "\(item),\(carNumber.text!),\(ta.text!)"
             }
             
             self.items[sender] = item
