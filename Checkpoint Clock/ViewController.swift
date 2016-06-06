@@ -50,6 +50,8 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     }
 
     @IBAction func shareBtn(sender: AnyObject) {
+        
+        print("sender \(sender)")
         var message = ""
         for item in self.items {
             message = message + item + "\r\n"
@@ -57,7 +59,9 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         print("Items contents \r\n \(message)")
         let firstActivityItem = "\(message)"
         let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [firstActivityItem], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = sender as? UIView
         presentViewController(activityViewController, animated:true, completion: nil)
+
 
 
     }
@@ -82,6 +86,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     }
     func splitActions(){
         if timeUp == true {
+            let splitTime = SplitTime(carNumber: 0,inTime: timeLbl.text!, ta: 0)
             self.items.insert(timeLbl.text!,atIndex:0)
             self.splitTable.reloadData()
             timeUp = false
@@ -293,5 +298,11 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         self.presentViewController(actionSheetController, animated: true, completion: nil)
         
     }
+}
+
+struct SplitTime {
+    var carNumber = 0
+    var inTime = "12:00:00"
+    var ta = 0
 }
 
