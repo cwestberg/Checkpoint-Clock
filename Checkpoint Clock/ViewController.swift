@@ -419,9 +419,9 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     func controllerDidConnect(notification: NSNotification) {
         
         let controller = notification.object as! GCController
-        print("controller is \(controller)")
-        print("game on ")
-        print("\(controller.gamepad!.buttonA.pressed)")
+//        print("controller is \(controller)")
+//        print("game on ")
+//        print("\(controller.gamepad!.buttonA.pressed)")
         
         controller.gamepad?.dpad.up.pressedChangedHandler = { (element: GCControllerElement, value: Float, pressed: Bool) in
             if pressed  && value > 0.2 {
@@ -453,6 +453,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         controller.gamepad?.buttonA.pressedChangedHandler = { (element: GCControllerElement, value: Float, pressed: Bool) in
             if pressed {
                 print("buttonA")
+                self.splitBtn(self)
             }
         }
         //        controller.gamepad?.rightShoulder
