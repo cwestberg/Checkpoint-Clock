@@ -54,7 +54,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="jWj-hv-Nxa">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" minimumValue="-10" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="jWj-hv-Nxa">
                                 <rect key="frame" x="173" y="559" width="94" height="29"/>
                                 <connections>
                                     <action selector="stepperAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="Xwv-eL-4Vp"/>
@@ -203,6 +203,8 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="offsetStepper" destination="jWj-hv-Nxa" id="CAd-Dr-vtS"/>
+                        <outlet property="offsetStepperLabel" destination="DQT-u4-QOK" id="dju-cx-CwR"/>
                         <outlet property="splitTable" destination="wVv-iW-VK7" id="N7o-j6-EkI"/>
                         <outlet property="timeLbl" destination="AJ8-Ju-R3U" id="7X2-dF-rXh"/>
                     </connections>
