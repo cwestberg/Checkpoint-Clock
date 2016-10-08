@@ -23,7 +23,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     var splits: [SplitTime] = []
     var controls: [Control] = []
     var timeUnit = "seconds"
-    var delayTimer = NSTimer()
+    var delayTimer = Timer()
     var timeUp = true
     
     // Bluetooth EZ-Key
@@ -32,13 +32,13 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.splitTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.splitTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
-        _ = NSTimer.scheduledTimerWithTimeInterval(0.02, target: self,
+        _ = Timer.scheduledTimer(timeInterval: 0.02, target: self,
             selector: #selector(ViewController.updateTimeLabel), userInfo: nil, repeats: true)
         
         // GameControler
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.controllerDidConnect(_:)), name: "GCControllerDidConnectNotification", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.controllerDidConnect(_:)), name: NSNotification.Name(rawValue: "GCControllerDidConnectNotification"), object: nil)
         
         // Bluetooth EZ-Key
         // "w" is pin 8 of the Bluetooth EZ-key chip
@@ -58,22 +58,22 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         }
     }
 
-    @IBAction func shareBtn(sender: AnyObject) {
+    @IBAction func shareBtn(_ sender: AnyObject) {
         
 //        print("sender \(sender)")
         let mailString = NSMutableString()
-        mailString.appendString("Car Number,Time In,Ta\n")
+        mailString.append("Car Number,Time In,Ta\n")
 
         for split in self.splits {
-            mailString.appendString("\(split.carNumber),\(split.inTime),\(split.ta)\n")
+            mailString.append("\(split.carNumber),\(split.inTime),\(split.ta)\n")
         }
         
-        mailString.appendString("Control Number,Open,Close\n")
+        mailString.append("Control Number,Open,Close\n")
         for control in controls {
-            mailString.appendString("\(control.controlNumber),\(control.openTime),\(control.closeTime)\n")
+            mailString.append("\(control.controlNumber),\(control.openTime),\(control.closeTime)\n")
         }
 
-        let data = mailString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        let data = mailString.data(using: String.Encoding.utf8.rawValue, allowLossyConversion: false)
         // Unwrapping the optional.
         if let content = data {
             print("NSData: \(content)")
@@ -93,36 +93,36 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         // As the .CSV is already attached, you can simply add an email
         // and press send.
         if MFMailComposeViewController.canSendMail() {
-            self.presentViewController(emailController, animated: true, completion: nil)
+            self.present(emailController, animated: true, completion: nil)
         }
 
 
     }
     // Delegate requirement
 
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
     
     // Split functions
-    func keyPressed(command: UIKeyCommand) {
+    func keyPressed(_ command: UIKeyCommand) {
         print("key pressed")
         self.splitActions()
 
 //        self.items.insert(timeLbl.text!,atIndex:0)
 //        self.splitTable.reloadData()
     }
-    @IBAction func splitBtn(sender: AnyObject) {
+    @IBAction func splitBtn(_ sender: AnyObject) {
         self.splitActions()
     }
     func splitActions(){
         if timeUp == true {
             let splitTime = SplitTime(carNumber: 0,inTime: timeLbl.text!, ta: 0, controlNumber: 1,note: "")
-            self.splits.insert(splitTime,atIndex:0)
+            self.splits.insert(splitTime,at:0)
             self.splitTable.reloadData()
             timeUp = false
             // start the timer
-            delayTimer = NSTimer.scheduledTimerWithTimeInterval(0.7, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+            delayTimer = Timer.scheduledTimer(timeInterval: 0.7, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
         }
 
     }
@@ -131,11 +131,11 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         delayTimer.invalidate()
     }
     
-    @IBAction func stepperAction(sender: AnyObject) {
+    @IBAction func stepperAction(_ sender: AnyObject) {
         offsetStepperLabel.text = "\(Int(offsetStepper.value))"
     }
     
-    @IBAction func secondsOrCents(sender:UISegmentedControl) {
+    @IBAction func secondsOrCents(_ sender:UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
             timeUnit = "seconds"
@@ -147,31 +147,31 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     }
     
     func updateTimeLabel() {
-        let currentDate = NSDate()
+        let currentDate = Date()
         let secondsToAdd = (offsetStepper.value * 0.1)
-        let correctedDate = currentDate.dateByAddingTimeInterval(Double(secondsToAdd))
+        let correctedDate = currentDate.addingTimeInterval(Double(secondsToAdd))
 
-        let calendar = NSCalendar.currentCalendar()
-        let dateComponents = calendar.components([NSCalendarUnit.Day, NSCalendarUnit.Month, NSCalendarUnit.Year, NSCalendarUnit.WeekOfYear, NSCalendarUnit.Hour, NSCalendarUnit.Minute, NSCalendarUnit.Second, NSCalendarUnit.Nanosecond], fromDate: correctedDate)
+        let calendar = Calendar.current
+        let dateComponents = (calendar as NSCalendar).components([NSCalendar.Unit.day, NSCalendar.Unit.month, NSCalendar.Unit.year, NSCalendar.Unit.weekOfYear, NSCalendar.Unit.hour, NSCalendar.Unit.minute, NSCalendar.Unit.second, NSCalendar.Unit.nanosecond], from: correctedDate)
         
-        let millisecond = Int(Double(dateComponents.nanosecond)/1000000)
-        let mytime = dateComponents.second * 1000 + millisecond
+        let millisecond = Int(Double(dateComponents.nanosecond!)/1000000)
+        let mytime = dateComponents.second! * 1000 + millisecond
         let cents = trunc((Double(mytime) * 1.66667)/1000)
 //        print("second = \(dateComponents.second) \(mytime) \(cents)")
         
 
-        let unit = Double(dateComponents.second)
+        let unit = Double(dateComponents.second!)
         let second = Int(unit)
         let secondString = String(format: "%02d", second)
 
 //        let cent = Int((unit * (1.6667)))
         let centString = String(format: "%02d", Int(cents))
-        let minuteString = String(format: "%02d", dateComponents.minute)
+        let minuteString = String(format: "%02d", dateComponents.minute!)
         switch timeUnit {
         case "seconds":
-            timeLbl.text = "\(dateComponents.hour):\(minuteString):\(secondString)"
+            timeLbl.text = "\(dateComponents.hour!):\(minuteString):\(secondString)"
         case "cents":
-            timeLbl.text = "\(dateComponents.hour):\(minuteString).\(centString)"
+            timeLbl.text = "\(dateComponents.hour!):\(minuteString).\(centString)"
         default:
             break;
         }
@@ -183,49 +183,49 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     
     // Table ----------------------------------------------------
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.splits.count
 //        return self.items.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = self.splitTable.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
-        let split = self.splits[indexPath.row]
-        cell.textLabel?.text = "Car: \(split.carNumber) Time: \(split.inTime) TA: \(split.ta)"
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = self.splitTable.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
+        let split = self.splits[(indexPath as NSIndexPath).row]
+        cell.textLabel?.text = "Car: \(split.carNumber) Time: \(split.inTime) TA: \(split.ta) -\(split.note)"
 //        cell.textLabel?.text = self.items[indexPath.row]
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("You selected cell #\(indexPath.row)!")
-        showAlertTapped(indexPath.row)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("You selected cell #\((indexPath as NSIndexPath).row)!")
+        showAlertTapped((indexPath as NSIndexPath).row)
         
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.Delete {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
 //            items.removeAtIndex(indexPath.row)
-            splits.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            splits.remove(at: (indexPath as NSIndexPath).row)
+            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
         }
     }
     // End Table
     
 
 //    ==========================================
-    @IBAction func showAlertTapped(sender: Int) {
+    @IBAction func showAlertTapped(_ sender: Int) {
         //Create the AlertController
-        let actionSheetController: UIAlertController = UIAlertController(title: "Enter/Edit", message: "Car Number\nTA\nNote", preferredStyle: .Alert)
+        let actionSheetController: UIAlertController = UIAlertController(title: "Enter/Edit", message: "Car Number\nTA\nNote", preferredStyle: .alert)
         
         //Create and add the Cancel action
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
             //Do some stuff
 
         }
 
         actionSheetController.addAction(cancelAction)
         //Create and an option action
-        let nextAction: UIAlertAction = UIAlertAction(title: "Add", style: .Default) { action -> Void in
+        let nextAction: UIAlertAction = UIAlertAction(title: "Add", style: .default) { action -> Void in
             //Do some other stuff
             let carNumber = actionSheetController.textFields![0]
             let ta = actionSheetController.textFields![1]
@@ -244,12 +244,13 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
 //                }
             }
             if ta.text! != "TA " {
-                let sa = ta.text!.stringByReplacingOccurrencesOfString("TA ", withString: "")
+                let sa = ta.text!.replacingOccurrences(of: "TA ", with: "")
                 if let ta = Int(sa) {
                     split.ta = ta
                 }
             }
             split.note = note.text!
+//            print("note: \(note.text) st \(split.note)")
 //            if note.text! != "Note " {
 //                let sa = note.text!.stringByReplacingOccurrencesOfString("Note ", withString: "")
 //                split.note = sa
@@ -271,7 +272,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         }
         actionSheetController.addAction(nextAction)
         
-        let deletaAllAction: UIAlertAction = UIAlertAction(title: "Delete All", style: .Default) { action -> Void in
+        let deletaAllAction: UIAlertAction = UIAlertAction(title: "Delete All", style: .default) { action -> Void in
             //Do some stuff
 //            self.items = []
             self.splits = []
@@ -280,7 +281,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         actionSheetController.addAction(deletaAllAction)
         
         //Add a text field
-        actionSheetController.addTextFieldWithConfigurationHandler { textField -> Void in
+        actionSheetController.addTextField { textField -> Void in
             //TextField configuration
             let split = self.splits[sender]
             if split.carNumber == 0 {
@@ -289,11 +290,11 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
             else {
                 textField.text = "\(split.carNumber)"
             }
-            textField.textColor = UIColor.blueColor()
-            textField.keyboardType = UIKeyboardType.NumberPad
+            textField.textColor = UIColor.blue
+            textField.keyboardType = UIKeyboardType.numberPad
         }
         
-        actionSheetController.addTextFieldWithConfigurationHandler { textField -> Void in
+        actionSheetController.addTextField { textField -> Void in
             //TextField configuration
             let split = self.splits[sender]
             if split.ta == 0 {
@@ -303,12 +304,12 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
                 textField.text = "\(split.ta)"
             }
             
-            textField.textColor = UIColor.blueColor()
-            textField.keyboardType = UIKeyboardType.NumberPad
+            textField.textColor = UIColor.blue
+            textField.keyboardType = UIKeyboardType.numberPad
         }
         
         
-        actionSheetController.addTextFieldWithConfigurationHandler { textField -> Void in
+        actionSheetController.addTextField { textField -> Void in
             //TextField configuration
             let split = self.splits[sender]
             if split.note == "" {
@@ -317,32 +318,35 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
             else {
                 textField.text = "\(split.note)"
             }
-            textField.textColor = UIColor.blueColor()
+            textField.textColor = UIColor.blue
         }
         
         //Present the AlertController
-        self.presentViewController(actionSheetController, animated: true, completion: nil)
+        self.present(actionSheetController, animated: true, completion: nil)
     }
     
 
-    @IBAction func openBtn(sender: AnyObject) {
+    @IBAction func openBtn(_ sender: AnyObject) {
         //Create the AlertController
-        let actionSheetController: UIAlertController = UIAlertController(title: "Open", message: "Control Number", preferredStyle: .Alert)
+        let actionSheetController: UIAlertController = UIAlertController(title: "Open", message: "Control Number", preferredStyle: .alert)
         
         //Create and add the Cancel action
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
             //Do some stuff
         }
         actionSheetController.addAction(cancelAction)
         
         //Create and add the Open action
-        let openAction: UIAlertAction = UIAlertAction(title: "Open", style: .Default) { action -> Void in
+        let openAction: UIAlertAction = UIAlertAction(title: "Open", style: .default) { action -> Void in
             //Do some stuff
             print(actionSheetController.textFields![0])
             let controlNumber = actionSheetController.textFields![0].text!
             if let cn = Int(controlNumber) {
                 let control = Control(controlNumber: cn,openTime: self.timeLbl.text!, closeTime: "")
                 self.controls.append(control)
+                let splitTime = SplitTime(carNumber: 0,inTime: self.timeLbl.text!, ta: 0, controlNumber: 1,note: "Open")
+                self.splits.insert(splitTime,at:0)
+                self.splitTable.reloadData()
             }
             
 //            let control = Control(controlNumber: controlNumber!,openTime: self.timeLbl.text!, closeTime: "")
@@ -356,36 +360,39 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         
         
         //Add a text field
-        actionSheetController.addTextFieldWithConfigurationHandler { textField -> Void in
+        actionSheetController.addTextField { textField -> Void in
             //TextField configuration
             textField.text = ""
-            textField.textColor = UIColor.blueColor()
-            textField.keyboardType = UIKeyboardType.NumberPad
+            textField.textColor = UIColor.blue
+            textField.keyboardType = UIKeyboardType.numberPad
         }
         
         //Present the AlertController
-        self.presentViewController(actionSheetController, animated: true, completion: nil)
+        self.present(actionSheetController, animated: true, completion: nil)
         
     }
     
-    @IBAction func closeBtn(sender: AnyObject) {
+    @IBAction func closeBtn(_ sender: AnyObject) {
         //Create the AlertController
-        let actionSheetController: UIAlertController = UIAlertController(title: "Close", message: "Control Number", preferredStyle: .Alert)
+        let actionSheetController: UIAlertController = UIAlertController(title: "Close", message: "Control Number", preferredStyle: .alert)
         
         //Create and add the Cancel action
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
             //Do some stuff
         }
         actionSheetController.addAction(cancelAction)
         
         //Create and add the Open action
-        let openAction: UIAlertAction = UIAlertAction(title: "Close", style: .Default) { action -> Void in
+        let openAction: UIAlertAction = UIAlertAction(title: "Close", style: .default) { action -> Void in
             //Do some stuff
             let controlNumber = actionSheetController.textFields![0].text!
             
             if let cn = Int(controlNumber) {
                 let control = Control(controlNumber: cn,openTime: "", closeTime: self.timeLbl.text!)
                 self.controls.append(control)
+                let splitTime = SplitTime(carNumber: 99,inTime: self.timeLbl.text!, ta: 0, controlNumber: 1,note: "Close")
+                self.splits.insert(splitTime,at:0)
+                self.splitTable.reloadData()
             }
             
 //            let control = Control(controlNumber: controlNumber!,openTime: "", closeTime: self.timeLbl.text!)
@@ -401,80 +408,33 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         
         
         //Add a text field
-        actionSheetController.addTextFieldWithConfigurationHandler { textField -> Void in
+        actionSheetController.addTextField { textField -> Void in
             //TextField configuration
             textField.text = ""
-            textField.textColor = UIColor.blueColor()
+            textField.textColor = UIColor.blue
 
-            textField.keyboardType = UIKeyboardType.NumberPad
+            textField.keyboardType = UIKeyboardType.numberPad
         }
         
         //Present the AlertController
-        self.presentViewController(actionSheetController, animated: true, completion: nil)
+        self.present(actionSheetController, animated: true, completion: nil)
         
     }
     
     //    Game Controller
     
-    func controllerDidConnect(notification: NSNotification) {
+    func controllerDidConnect(_ notification: Notification) {
         
         let controller = notification.object as! GCController
 //        print("controller is \(controller)")
 //        print("game on ")
 //        print("\(controller.gamepad!.buttonA.pressed)")
         
-        controller.gamepad?.dpad.up.pressedChangedHandler = { (element: GCControllerElement, value: Float, pressed: Bool) in
-            if pressed  && value > 0.2 {
-                print("dpad.up")
-                
-            }
-        }
-        
-        controller.gamepad?.dpad.down.pressedChangedHandler = { (element: GCControllerElement, value: Float, pressed: Bool) in
-            if pressed && value > 0.2  {
-                print("dpad.up")
-            }
-        }
-        
-        controller.gamepad?.dpad.left.pressedChangedHandler = { (element: GCControllerElement, value: Float, pressed: Bool) in
-            if pressed  && value > 0.2 {
-                print("dpad.left")
-                
-            }
-        }
-        
-        controller.gamepad?.dpad.right.pressedChangedHandler = { (element: GCControllerElement, value: Float, pressed: Bool) in
-            if pressed && value > 0.2  {
-                print("dpad.right")
-                
-            }
-        }
         
         controller.gamepad?.buttonA.pressedChangedHandler = { (element: GCControllerElement, value: Float, pressed: Bool) in
             if pressed {
                 print("buttonA")
                 self.splitBtn(self)
-            }
-        }
-        //        controller.gamepad?.rightShoulder
-        controller.gamepad?.buttonB.pressedChangedHandler = { (element: GCControllerElement, value: Float, pressed: Bool) in
-            if pressed {
-                print("buttonB")
-                
-            }
-        }
-        
-        controller.gamepad?.buttonY.pressedChangedHandler = { (element: GCControllerElement, value: Float, pressed: Bool) in
-            if pressed {
-                print("buttonY")
-            }
-        }
-        
-        
-        controller.gamepad?.buttonX.pressedChangedHandler = { (element: GCControllerElement, value: Float, pressed: Bool) in
-            if pressed {
-                print("buttonX")
-                
             }
         }
         controller.gamepad?.rightShoulder.pressedChangedHandler = { (element: GCControllerElement, value: Float, pressed: Bool) in
