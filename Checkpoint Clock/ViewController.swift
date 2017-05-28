@@ -15,6 +15,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var timeLbl: UILabel!
    
     @IBOutlet weak var splitTable: UITableView!
+     @IBOutlet weak var centsSecsSegmentedControl: UISegmentedControl!
     
     @IBOutlet weak var offsetStepper: UIStepper!
     @IBOutlet weak var offsetStepperLabel: UILabel!
@@ -22,9 +23,12 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
 //    var items: [String] = []
     var splits: [SplitTime] = []
     var controls: [Control] = []
-    var timeUnit = "seconds"
+    var timeUnit = "cents"
     var delayTimer = Timer()
     var timeUp = true
+    var bczt = Date()
+    var bcztHour = 0
+    var bcztMinute = 0
     
     // Bluetooth EZ-Key
     var keys = [UIKeyCommand]()
@@ -56,6 +60,48 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         get {
             return keys
         }
+
+    }
+    @IBAction func bcztBtn(_ sender: Any) {
+        //Create the AlertController
+        let actionSheetController: UIAlertController = UIAlertController(title: "Enter", message: "BCZ Hour\nMinute", preferredStyle: .alert)
+        
+        //Create and add the Cancel action
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+            //Do some stuff
+        }
+        actionSheetController.addAction(cancelAction)
+        
+        //Create and an option action
+        let nextAction: UIAlertAction = UIAlertAction(title: "Add", style: .default) { action -> Void in
+            //Do some other stuff
+            let bczHourText = actionSheetController.textFields![0]
+            let bczMinuteText = actionSheetController.textFields![1]
+            
+            if bczHourText.text! != "" {
+                self.bcztHour = Int(bczHourText.text!)!
+            }
+            if bczMinuteText.text! != "" {
+                self.bcztMinute = Int(bczMinuteText.text!)!
+            }
+        }
+        actionSheetController.addAction(nextAction)
+        
+        //Add a text field
+        actionSheetController.addTextField { textField -> Void in
+            //TextField configuration
+            textField.textColor = UIColor.blue
+            textField.keyboardType = UIKeyboardType.numberPad
+        }
+        
+        actionSheetController.addTextField { textField -> Void in
+            //TextField configuration
+            textField.textColor = UIColor.blue
+            textField.keyboardType = UIKeyboardType.numberPad
+        }
+     //Present the AlertController
+     self.present(actionSheetController, animated: true, completion: nil)
+
     }
 
     @IBAction func shareBtn(_ sender: AnyObject) {
@@ -72,6 +118,9 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         for control in controls {
             mailString.append("\(control.controlNumber),\(control.openTime),\(control.closeTime)\n")
         }
+     
+     
+        mailString.append("\(bcztHour):\(bcztMinute)\n")
 
         let data = mailString.data(using: String.Encoding.utf8.rawValue, allowLossyConversion: false)
         // Unwrapping the optional.
@@ -136,15 +185,61 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     }
     
     @IBAction func secondsOrCents(_ sender:UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            timeUnit = "seconds"
-        case 1:
-            timeUnit = "cents"
-        default:
-            break;
-        }
+     ruSure(sender)
+//        switch sender.selectedSegmentIndex {
+//        case 0:
+//            timeUnit = "cents"
+//        case 1:
+//            timeUnit = "seconds"
+//        default:
+//            break;
+//        }
     }
+//     func changeSecondsOrCents(_ sender:UISegmentedControl, ok:Bool) -> Void {
+//          print("\(ok)")
+//
+//          if ok {
+//               switch sender.selectedSegmentIndex {
+//               case 0:
+//                    timeUnit = "cents"
+//               case 1:
+//                    timeUnit = "seconds"
+//               default:
+//                    break;
+//               }
+//          }
+//
+//     }
+     
+     func ruSure(_ sender:UISegmentedControl) {
+          let alertController = UIAlertController(title: "Change Time Units", message: "OK to Change", preferredStyle: .alert)
+          let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+               print("OK Button Pressed \(sender.selectedSegmentIndex)")
+               switch sender.selectedSegmentIndex {
+               case 0:
+                    self.timeUnit = "cents"
+               case 1:
+                    self.timeUnit = "seconds"
+               default:
+                    break;
+               }
+          })
+          let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+               print("Cancel Button Pressed")
+               switch sender.selectedSegmentIndex {
+               case 0:
+                    self.centsSecsSegmentedControl.selectedSegmentIndex = 1
+               case 1:
+                    self.centsSecsSegmentedControl.selectedSegmentIndex = 0
+               default:
+                    break;
+               }
+
+          }
+          alertController.addAction(ok)
+          alertController.addAction(cancel)
+          present(alertController, animated: true, completion: nil)
+     }
     
     func updateTimeLabel() {
         let currentDate = Date()
@@ -175,6 +270,8 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         default:
             break;
         }
+//     timeLbl.text = "\(dateComponents.hour!):\(minuteString):\(secondString) (.\(centString))"
+
 
     
 //          formatter.timeStyle = .MediumStyle

@@ -37,7 +37,7 @@
 /* Begin PBXFileReference section */
 		2A00BCA91C224EFB00985207 /* Checkpoint Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Checkpoint Clock.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A00BCAC1C224EFB00985207 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2A00BCAE1C224EFB00985207 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2A00BCAE1C224EFB00985207 /* ViewController.swift */ = {isa = PBXFileReference; indentWidth = 5; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2A00BCB11C224EFB00985207 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2A00BCB41C224EFB00985207 /* Checkpoint_Clock.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Checkpoint_Clock.xcdatamodel; sourceTree = "<group>"; };
 		2A00BCB61C224EFB00985207 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
