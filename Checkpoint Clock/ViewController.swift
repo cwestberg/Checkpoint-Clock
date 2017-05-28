@@ -175,6 +175,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         }
 
     }
+//     switch debounce
     func timerAction(){
         timeUp = true
         delayTimer.invalidate()
